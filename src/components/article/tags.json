@@ -1,0 +1,16 @@
+{
+  "collectionName": "components_article_tags",
+  "info": {
+    "displayName": "tags",
+    "icon": "hashtag",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "tag": {
+      "type": "string",
+      "unique": true,
+      "maxLength": 25
+    }
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "collectionName": "components_user_other_links",
+  "info": {
+    "displayName": "Other Link",
+    "icon": "link"
+  },
+  "options": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "link": {
+      "type": "string"
+    }
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "kind": "singleType",
+  "collectionName": "profiles",
+  "info": {
+    "singularName": "profile",
+    "pluralName": "profiles",
+    "displayName": "Author Profile",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "fullname": {
+      "type": "string",
+      "required": true
+    },
+    "headline": {
+      "type": "string",
+      "required": false
+    },
+    "profile_summary": {
+      "type": "text"
+    },
+    "social_media": {
+      "type": "component",
+      "repeatable": true,
+      "component": "user.social-media"
+    },
+    "other_link": {
+      "displayName": "Other Link",
+      "type": "component",
+      "repeatable": true,
+      "component": "user.other-link"
+    }
+  }
+}
