@@ -407,6 +407,9 @@ export interface ApiArticleArticle extends Struct.CollectionTypeSchema {
     >;
     metadata: Schema.Attribute.DynamicZone<['shared.seo']>;
     publishedAt: Schema.Attribute.DateTime;
+    slug: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.Unique;
     tags: Schema.Attribute.Component<'article.tags', true>;
     title: Schema.Attribute.String &
       Schema.Attribute.Required &

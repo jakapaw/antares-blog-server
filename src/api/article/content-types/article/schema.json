@@ -57,6 +57,11 @@
       "type": "component",
       "repeatable": true,
       "component": "article.tags"
+    },
+    "slug": {
+      "type": "string",
+      "unique": true,
+      "required": true
     }
   }
 }

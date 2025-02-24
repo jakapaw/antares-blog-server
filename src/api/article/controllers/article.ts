@@ -2,6 +2,25 @@
  * article controller
  */
 
-import { factories } from '@strapi/strapi'
+import { factories } from '@strapi/strapi';
 
-export default factories.createCoreController('api::article.article');
+export default factories.createCoreController('api::article.article', ({ strapi }) => ({
+    async findOneBySlug(ctx) {
+        try {
+            const slug = ctx.params.slug;
+            console.log(slug);
+            const article = await strapi.entityService.findMany('api::article.article', {
+                fields: ["id", "slug", "publishedAt", "title", "content_summary", "content"],
+                populate: ["cover_image", "category", "createdBy", "localizations", "metadata", "tags"],
+                filters: {
+                    slug: slug
+                }
+            });
+            if (article.length == 1) {
+                return article;
+            }
+        } catch (error) {
+            ctx
+        }
+    }
+}));
