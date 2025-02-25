@@ -386,6 +386,7 @@ export interface ApiArticleArticle extends Struct.CollectionTypeSchema {
     };
   };
   attributes: {
+    authors: Schema.Attribute.Relation<'manyToMany', 'api::profile.profile'>;
     category: Schema.Attribute.Relation<'manyToOne', 'api::category.category'>;
     content: Schema.Attribute.RichText &
       Schema.Attribute.Required &
@@ -427,7 +428,7 @@ export interface ApiBrandBrand extends Struct.SingleTypeSchema {
   collectionName: 'brands';
   info: {
     description: '';
-    displayName: 'brand';
+    displayName: 'Brand';
     pluralName: 'brands';
     singularName: 'brand';
   };
@@ -485,7 +486,7 @@ export interface ApiCategoryCategory extends Struct.CollectionTypeSchema {
   };
 }
 
-export interface ApiProfileProfile extends Struct.SingleTypeSchema {
+export interface ApiProfileProfile extends Struct.CollectionTypeSchema {
   collectionName: 'profiles';
   info: {
     description: '';
@@ -497,6 +498,7 @@ export interface ApiProfileProfile extends Struct.SingleTypeSchema {
     draftAndPublish: false;
   };
   attributes: {
+    articles: Schema.Attribute.Relation<'manyToMany', 'api::article.article'>;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -509,12 +511,18 @@ export interface ApiProfileProfile extends Struct.SingleTypeSchema {
     > &
       Schema.Attribute.Private;
     other_link: Schema.Attribute.Component<'user.other-link', true>;
+    profile_photo: Schema.Attribute.Media<
+      'images' | 'files' | 'videos' | 'audios'
+    >;
     profile_summary: Schema.Attribute.Text;
     publishedAt: Schema.Attribute.DateTime;
     social_media: Schema.Attribute.Component<'user.social-media', true>;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    username: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.Unique;
   };
 }
 

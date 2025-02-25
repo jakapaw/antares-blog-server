@@ -62,6 +62,12 @@
       "type": "string",
       "unique": true,
       "required": true
+    },
+    "authors": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::profile.profile",
+      "mappedBy": "articles"
     }
   }
 }

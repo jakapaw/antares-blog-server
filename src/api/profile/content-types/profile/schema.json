@@ -1,5 +1,5 @@
 {
-  "kind": "singleType",
+  "kind": "collectionType",
   "collectionName": "profiles",
   "info": {
     "singularName": "profile",
@@ -33,6 +33,28 @@
       "type": "component",
       "repeatable": true,
       "component": "user.other-link"
+    },
+    "profile_photo": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "username": {
+      "type": "string",
+      "unique": true,
+      "required": true
+    },
+    "articles": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::article.article",
+      "inversedBy": "authors"
     }
   }
 }
