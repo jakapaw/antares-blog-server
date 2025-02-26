@@ -30,6 +30,11 @@
     },
     "introduction": {
       "type": "text"
+    },
+    "authors": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::profile.profile"
     }
   }
 }

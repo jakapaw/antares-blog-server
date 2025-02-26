@@ -9,8 +9,18 @@ export default factories.createCoreController('api::article.article', ({ strapi 
         try {
             const slug = ctx.params.slug;
             const article = await strapi.entityService.findMany('api::article.article', {
-                fields: ['id', 'slug', 'publishedAt', 'title', 'content_summary', 'content'],
-                populate: ['cover_image', 'category', 'createdBy', 'localizations', 'metadata', 'tags'],
+                fields: ['id', 'slug', 'updatedAt', 'title', 'content_summary', 'content'],
+                populate: {
+                    cover_image: {},
+                    category: {},
+                    createdBy: {},
+                    localizations: {},
+                    metadata: {},
+                    tags: {},
+                    authors: {
+                        populate: ['profile_photo', 'social_media']
+                    }
+                },
                 filters: {
                     slug: slug
                 }
