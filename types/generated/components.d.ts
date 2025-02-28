@@ -9,7 +9,6 @@ export interface ArticleTags extends Struct.ComponentSchema {
   };
   attributes: {
     tag: Schema.Attribute.String &
-      Schema.Attribute.Unique &
       Schema.Attribute.SetMinMaxLength<{
         maxLength: 25;
       }>;

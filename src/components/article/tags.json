@@ -9,7 +9,7 @@
   "attributes": {
     "tag": {
       "type": "string",
-      "unique": true,
+      "unique": false,
       "maxLength": 25
     }
   }
