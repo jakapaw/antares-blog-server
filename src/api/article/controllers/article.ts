@@ -25,11 +25,26 @@ export default factories.createCoreController('api::article.article', ({ strapi 
                     slug: slug
                 }
             });
-            if (article.length == 1) {
-                return article;
-            } else {
+            if (article.length == 0) {
                 return null;
             }
+            return article;
+        } catch (error) {
+            ctx.onerror(error);
+        }
+    },
+
+    async search(ctx) {
+        const key = ctx.request.query["key"];
+        if (!key) {
+            ctx.badRequest('key query parameter is undefined');
+        }
+        try {
+            const articles = await strapi.service('api::article.search').searchTitle(key);
+            if (articles.length == 0) {
+                return null;
+            }
+            return articles;
         } catch (error) {
             ctx.onerror(error);
         }
